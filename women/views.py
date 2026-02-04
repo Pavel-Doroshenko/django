@@ -208,7 +208,7 @@ class TagPostList(DataMixin, ListView):
         return self.get_mixin_context(context, title="Тег: " + tag.tag)
 
     def get_queryset(self):
-    """ функция опубликованные поты по слагу"""
+        """ функция опубликованные поты по слагу"""
         return Women.published.filter(
             tags__slug=self.kwargs["tag_slug"]
         ).select_related("cat")
