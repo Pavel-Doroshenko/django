@@ -1,5 +1,4 @@
 # from winreg import CreateKey
-
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
@@ -7,11 +6,9 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView
-
 from women.forms import AddPostForm
 from women.models import Women, TagPost
 from django.views.generic import ListView
-
 from women.utils import DataMixin
 
 menu = [
@@ -211,6 +208,7 @@ class TagPostList(DataMixin, ListView):
         return self.get_mixin_context(context, title="Тег: " + tag.tag)
 
     def get_queryset(self):
+    """ функция опубликованные поты по слагу"""
         return Women.published.filter(
             tags__slug=self.kwargs["tag_slug"]
         ).select_related("cat")
