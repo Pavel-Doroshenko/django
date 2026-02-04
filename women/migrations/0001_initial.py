@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -16,60 +15,174 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(db_index=True, max_length=100, verbose_name='Категория')),
-                ('slug', models.SlugField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        db_index=True, max_length=100, verbose_name="Категория"
+                    ),
+                ),
+                ("slug", models.SlugField(max_length=255, unique=True)),
             ],
             options={
-                'verbose_name': 'Категория',
-                'verbose_name_plural': 'Категории',
+                "verbose_name": "Категория",
+                "verbose_name_plural": "Категории",
             },
         ),
         migrations.CreateModel(
-            name='Husband',
+            name="Husband",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('age', models.IntegerField(null=True)),
-                ('m_count', models.IntegerField(blank=True, default=0)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("age", models.IntegerField(null=True)),
+                ("m_count", models.IntegerField(blank=True, default=0)),
             ],
         ),
         migrations.CreateModel(
-            name='TagPost',
+            name="TagPost",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tag', models.CharField(db_index=True, max_length=100)),
-                ('slug', models.SlugField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("tag", models.CharField(db_index=True, max_length=100)),
+                ("slug", models.SlugField(max_length=255, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='UploadFiles',
+            name="UploadFiles",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('file', models.FileField(upload_to='uploads_model')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("file", models.FileField(upload_to="uploads_model")),
             ],
         ),
         migrations.CreateModel(
-            name='Women',
+            name="Women",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('slug', models.SlugField(max_length=255, unique=True, validators=[django.core.validators.MinLengthValidator(5), django.core.validators.MaxLengthValidator(100)])),
-                ('content', models.TextField(blank=True, verbose_name='Текст статьи')),
-                ('photo', models.ImageField(blank=True, default=None, null=True, upload_to='photos/%Y/%m/%d/', verbose_name='Фото')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
-                ('time_update', models.DateTimeField(auto_now=True, verbose_name='Время изменения')),
-                ('is_published', models.BooleanField(choices=[(False, 'Черновик'), (True, 'Опубликовано')], default=0, verbose_name='Статус')),
-                ('author', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='post', to=settings.AUTH_USER_MODEL)),
-                ('cat', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='posts', to='women.category', verbose_name='Категории')),
-                ('husband', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='wuman', to='women.husband', verbose_name='Муж')),
-                ('tags', models.ManyToManyField(blank=True, related_name='tags', to='women.tagpost', verbose_name='Тэги')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "slug",
+                    models.SlugField(
+                        max_length=255,
+                        unique=True,
+                        validators=[
+                            django.core.validators.MinLengthValidator(5),
+                            django.core.validators.MaxLengthValidator(100),
+                        ],
+                    ),
+                ),
+                ("content", models.TextField(blank=True, verbose_name="Текст статьи")),
+                (
+                    "photo",
+                    models.ImageField(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        upload_to="photos/%Y/%m/%d/",
+                        verbose_name="Фото",
+                    ),
+                ),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время создания"
+                    ),
+                ),
+                (
+                    "time_update",
+                    models.DateTimeField(auto_now=True, verbose_name="Время изменения"),
+                ),
+                (
+                    "is_published",
+                    models.BooleanField(
+                        choices=[(False, "Черновик"), (True, "Опубликовано")],
+                        default=0,
+                        verbose_name="Статус",
+                    ),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="post",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "cat",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="posts",
+                        to="women.category",
+                        verbose_name="Категории",
+                    ),
+                ),
+                (
+                    "husband",
+                    models.OneToOneField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="wuman",
+                        to="women.husband",
+                        verbose_name="Муж",
+                    ),
+                ),
+                (
+                    "tags",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="tags",
+                        to="women.tagpost",
+                        verbose_name="Тэги",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Известные женщины',
-                'verbose_name_plural': 'Известные женщины',
+                "verbose_name": "Известные женщины",
+                "verbose_name_plural": "Известные женщины",
             },
         ),
     ]
