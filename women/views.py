@@ -1,5 +1,5 @@
 import uuid
-from winreg import CreateKey
+#from winreg import CreateKey
 
 from django import views
 from django.contrib.auth.decorators import login_required, permission_required
