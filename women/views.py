@@ -5,10 +5,10 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, ListView
 from women.forms import AddPostForm
 from women.models import Women, TagPost
-from django.views.generic import ListView
+#from django.views.generic import ListView
 from women.utils import DataMixin
 
 menu = [
@@ -107,7 +107,8 @@ class ShowPost(DataMixin, DetailView):
 #         'form': form
 #     }
 #
-#     return render(request,'women/addpage.html', {'menu': menu, 'title': 'Добавление статьи', 'form': form})
+#     return render(request,'women/addpage.html', {'menu': menu,
+#                                                  'title': 'Добавление статьи', 'form': form})
 
 
 class AddPage(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView):
