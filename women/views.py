@@ -48,7 +48,7 @@ class WomenHome(DataMixin, ListView):
         return Women.published.all().select_related("cat")
 
 
-def page_not_found(request, exception):
+def page_not_found(_request, _exception):
     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
 
 
@@ -143,11 +143,11 @@ class UpdatePage(PermissionRequiredMixin, DataMixin, UpdateView):
 
 
 @permission_required(perm="women.add_women", raise_exception=True)
-def contact(request):
+def contact(_request):
     return HttpResponse("Обратная связь")
 
 
-def login(request):
+def login(_request):
     return HttpResponse("Авторизация")
 
 
@@ -184,7 +184,7 @@ class WomenCategory(DataMixin, ListView):
         )
 
 
-#     def show_tag_postlist(request, tag_slug):
+#     def show_tag_post_list(request, tag_slug):
 #     tag = get_object_or_404(TagPost, slug=tag_slug)
 #     posts = tag.tags.filter(is_published=Women.Status.PUBLISHED)
 #     data = {
@@ -208,7 +208,7 @@ class TagPostList(DataMixin, ListView):
         return self.get_mixin_context(context, title="Тег: " + tag.tag)
 
     def get_queryset(self):
-        """ функция опубликованные поты по слагу"""
+        """ функция опубликованные посты по slug"""
         return Women.published.filter(
             tags__slug=self.kwargs["tag_slug"]
         ).select_related("cat")

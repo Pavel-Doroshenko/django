@@ -19,6 +19,7 @@ class MarriedFilter(admin.SimpleListFilter):
             return queryset.filter(husband__isnull=False)
         elif self.value() == "single":
             return queryset.filter(husband__isnull=True)
+        return None
 
 
 @admin.register(Women)

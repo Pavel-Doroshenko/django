@@ -46,14 +46,14 @@ class Women(models.Model):
         verbose_name="Категории",
     )
     tags = models.ManyToManyField(
-        "TagPost", blank=True, related_name="tags", verbose_name="Тэги"
+        "TagPost", blank=True, related_name="tags", verbose_name="Тэг"
     )
     husband = models.OneToOneField(
         "Husband",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="wuman",
+        related_name="woman",
         verbose_name="Муж",
     )
     author = models.ForeignKey(
