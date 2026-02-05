@@ -1,5 +1,5 @@
 [MESSAGES CONTROL]
-disable=c0114,c0115,c0116
+disable=c0114,c0115,c0116,e1101
 
 [MAIN]
 load-plugins = pylint_django,
