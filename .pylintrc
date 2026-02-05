@@ -1,6 +1,6 @@
 [MESSAGES CONTROL]
 disable=c0114,c0115,c0116,e1101,r0903,r0901
 
-[MAIN]
+[MASTER]
 load-plugins = pylint_django,
 django-settings-module = sitewomen.settings.py
