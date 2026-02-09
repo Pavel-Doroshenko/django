@@ -1,9 +1,8 @@
 from django import forms
 from django.utils.deconstruct import deconstructible
-# from prompt_toolkit.validation import ValidationError
-
-from .models import Category, Husband, Women
 from django.core.exceptions import ValidationError
+from .models import Category, Husband, Women
+# from prompt_toolkit.validation import ValidationError
 
 
 @deconstructible
@@ -21,7 +20,7 @@ class RussianValidator:
         )
 
     def __call__(self, value):
-        if not (set(value) <= set(self.ALLOWED_CHARS)):
+        if not set(value) <= set(self.ALLOWED_CHARS):
             raise ValidationError(self.message, code=self.code, params={"value": value})
 
 
