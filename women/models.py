@@ -1,4 +1,3 @@
-# pylint disable=e0102
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
@@ -74,7 +73,7 @@ class Women(models.Model):
             models.Index(fields=["-time_create"]),
         ]
 
-    class Meta:
+    class Meta: # pylint: disable=function-redefined
         verbose_name = "Известные женщины"
         verbose_name_plural = "Известные женщины"
 
