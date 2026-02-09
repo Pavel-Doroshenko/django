@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-from django.conf.global_settings import AUTHENTICATION_BACKENDS, AUTH_USER_MODEL
+#from django.conf.global_settings import AUTHENTICATION_BACKENDS, AUTH_USER_MODEL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -155,7 +155,7 @@ AUTHENTICATION_BACKENDS = [
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST_PASSWORD = "qcmudgimnalmuulv"
+#EMAIL_HOST_PASSWORD = "qcmudgimnalmuulv"
 
 EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
