@@ -14,12 +14,19 @@ class MarriedFilter(admin.SimpleListFilter):
             ("single", "Не замужем"),
         ]
 
+    # def queryset(self, request, queryset):
+    #     if self.value() == "married":
+    #         return queryset.filter(husband__isnull=False)
+    #     elif self.value() == "single":
+    #         return queryset.filter(husband__isnull=True)
+    #     return None
+
     def queryset(self, request, queryset):
         if self.value() == "married":
             return queryset.filter(husband__isnull=False)
-        elif self.value() == "single":
+        else:
             return queryset.filter(husband__isnull=True)
-        return None
+        #return None
 
 
 @admin.register(Women)
