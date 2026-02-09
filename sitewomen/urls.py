@@ -18,14 +18,11 @@ Including another URLconf
 #from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.contrib import admin
-
 # from django.template.context_processors import static
 from django.urls import path, include
-
 from sitewomen import settings
-#from women.views import page_not_found
-
-from women.views import *
+from women.views import page_not_found
+#from women.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
