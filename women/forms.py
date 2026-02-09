@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from django import forms
 from django.utils.deconstruct import deconstructible
 from django.core.exceptions import ValidationError
@@ -6,6 +8,7 @@ from .models import Category, Husband, Women
 
 
 @deconstructible
+@dataclass
 class RussianValidator:
     ALLOWED_CHARS = (
         "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщбыъэюя0123456789- "

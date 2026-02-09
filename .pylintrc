@@ -3,5 +3,8 @@ load-plugins = pylint_django,
 django-settings-module = sitewomen.settings
 
 [MESSAGES CONTROL]
-disable= r0801,c0114,c0115,c0116,e1101
+disable= r0801,c0114,c0115,c0116
+
+[DESIGN]
+max-parents=8
 
