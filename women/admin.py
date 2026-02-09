@@ -24,8 +24,7 @@ class MarriedFilter(admin.SimpleListFilter):
     def queryset(self, request, queryset):
         if self.value() == "married":
             return queryset.filter(husband__isnull=False)
-        else:
-            return queryset.filter(husband__isnull=True)
+        return queryset.filter(husband__isnull=True)
         #return None
 
 
