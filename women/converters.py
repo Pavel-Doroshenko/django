@@ -7,4 +7,5 @@ class FourDigitYearConverter:
 
     @staticmethod
     def to_url(_self, value):
-        return "%04d" % value
+        #return "%04d" % value
+        return f"{value:04d}"
