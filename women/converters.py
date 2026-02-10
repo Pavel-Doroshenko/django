@@ -1,4 +1,6 @@
+"""Конвертация"""
 class FourDigitYearConverter:
+    """Конвертация даты"""
     regex = "[0-9]{4}"
 
     @staticmethod

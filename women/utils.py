@@ -1,3 +1,4 @@
+"""Пагинация"""
 menu = [
     {"title": "О сайте", "url_name": "about"},
     {"title": "Добавить статью", "url_name": "add_page"},
@@ -7,6 +8,7 @@ menu = [
 
 
 class DataMixin:# pylint: disable=R0903
+    """Пагинация"""
     paginate_by = 2
     title_page = None
     extra_context = {}

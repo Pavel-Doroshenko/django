@@ -1,3 +1,4 @@
+"""Формы для сайта"""
 from dataclasses import dataclass
 
 from django import forms
@@ -10,6 +11,7 @@ from .models import Category, Husband, Women
 @deconstructible
 @dataclass
 class RussianValidator:
+    """Валидация по русским символам"""
     ALLOWED_CHARS = (
         "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщбыъэюя0123456789- "
     )
@@ -28,6 +30,7 @@ class RussianValidator:
 
 
 class AddPostForm(forms.ModelForm):
+    """Добавление поста в форму"""
     cat = forms.ModelChoiceField(
         queryset=Category.objects.all(),
         label="Категории",
@@ -58,4 +61,5 @@ class AddPostForm(forms.ModelForm):
 
 
 class UploadFileForm(forms.Form):
+    """Загрузка файла"""
     file = forms.FileField(label="Файл")

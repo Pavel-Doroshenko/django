@@ -1,3 +1,4 @@
+"""формирование моделей таблиц"""
 from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
@@ -11,7 +12,9 @@ class PublishedModel(models.Manager):#pylint: disable=R0903
 
 
 class Women(models.Model):
+    """таблица женщины"""
     class Status(models.IntegerChoices):
+        """Статус постов"""
         DRAFT = 0, "Черновик"
         PUBLISHED = 1, "Опубликовано"
 
@@ -89,6 +92,7 @@ class Women(models.Model):
 
 
 class Category(models.Model):
+    """Категории"""
     name = models.CharField(max_length=100, db_index=True, verbose_name="Категория")
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
@@ -105,6 +109,7 @@ class Category(models.Model):
 
 
 class TagPost(models.Model):
+    """Тэг постов"""
     tag = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
@@ -117,6 +122,7 @@ class TagPost(models.Model):
 
 
 class Husband(models.Model):
+    """Мужья известных женщин"""
     name = models.CharField(max_length=100)
     age = models.IntegerField(null=True)
     m_count = models.IntegerField(blank=True, default=0)
@@ -126,4 +132,5 @@ class Husband(models.Model):
 
 
 class UploadFiles(models.Model):
+    """Загрузка файлов"""
     file = models.FileField(upload_to="uploads_model")

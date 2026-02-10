@@ -1,3 +1,4 @@
+"""Модуль представления известных женщин"""
 # pylint: disable=duplicate-code
 # from winreg import CreateKey
 from django.contrib.auth.decorators import login_required, permission_required
@@ -33,6 +34,7 @@ menu = [
 
 
 class WomenHome(DataMixin, ListView):
+    """Главная страница"""
     # model = Women
     template_name = "women/index.html"
     context_object_name = "posts"
@@ -81,6 +83,7 @@ def about(request):
 
 
 class ShowPost(DataMixin, DetailView):
+    """Отображение постов"""
     model = Women
     template_name = "women/post.html"
     slug_url_kwarg = "post_slug"
@@ -115,6 +118,7 @@ class ShowPost(DataMixin, DetailView):
 
 
 class AddPage(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView):
+    """Добавление постов"""
     # model = Women
     # fields = ['title', 'slug', 'content', 'is_published', 'cat']
     form_class = AddPostForm
@@ -134,6 +138,7 @@ class AddPage(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView
 
 
 class UpdatePage(PermissionRequiredMixin, DataMixin, UpdateView):
+    """Обновление постов"""
     model = Women
     fields = ["title", "content", "photo", "is_published", "cat"]
     template_name = "women/addpage.html"
@@ -171,6 +176,7 @@ def login(_request):
 
 
 class WomenCategory(DataMixin, ListView):
+    """Посты по категориям"""
     template_name = "women/index.html"
     context_object_name = "posts"
     allow_empty = False
@@ -204,6 +210,7 @@ class WomenCategory(DataMixin, ListView):
 
 
 class TagPostList(DataMixin, ListView):
+    """Посты"""
     template_name = "women/index.html"
     context_object_name = "posts"
     allow_empty = False

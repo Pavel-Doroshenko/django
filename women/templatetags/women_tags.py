@@ -1,3 +1,4 @@
+"""Категории известных женщин"""
 from django import template
 from django.db.models import Count
 
