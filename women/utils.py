@@ -19,7 +19,7 @@ class DataMixin:# pylint: disable=R0903
         #     self.extra_context['menu'] = menu
 
     def get_mixin_context(self, context, **kwargs):
-        """ """
+        """Заголовок страницы"""
         if self.title_page:
             context["title"] = self.title_page
 
