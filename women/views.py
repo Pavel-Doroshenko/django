@@ -50,11 +50,13 @@ class WomenHome(DataMixin, ListView):
 
 
 def page_not_found(_request, _exception):
+    """Страница не найдена"""
     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
 
 
 @login_required(login_url="/admin/")
 def about(request):
+    """Выход"""
     contact_list = Women.published.all()
     paginator = Paginator(contact_list, 3)
 
@@ -146,10 +148,12 @@ class UpdatePage(PermissionRequiredMixin, DataMixin, UpdateView):
 
 @permission_required(perm="women.add_women", raise_exception=True)
 def contact(_request):
+    """Контакты"""
     return HttpResponse("Обратная связь")
 
 
 def login(_request):
+    """Авторизация"""
     return HttpResponse("Авторизация")
 
 

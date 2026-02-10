@@ -6,7 +6,7 @@ menu = [
 ]
 
 
-class DataMixin:
+class DataMixin:# pylint: disable=R0903
     paginate_by = 2
     title_page = None
     extra_context = {}
@@ -19,6 +19,7 @@ class DataMixin:
         #     self.extra_context['menu'] = menu
 
     def get_mixin_context(self, context, **kwargs):
+        """ """
         if self.title_page:
             context["title"] = self.title_page
 

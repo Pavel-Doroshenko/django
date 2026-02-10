@@ -56,17 +56,20 @@ class WomenAdmin(admin.ModelAdmin):
 
     @admin.display(description="Изображение")
     def post_photo(self, women: Women):
+        """"Посты с фото"""
         if women.photo:
             return mark_safe(f"<img src='{women.photo.url}' width=50>")
         return "Без фото"
 
     @admin.action(description="Опубликовать выбранные записи")
     def set_published(self, request, queryset):
+        """"Публикация выбранных записей"""
         count = queryset.update(is_published=Women.Status.PUBLISHED)
         self.message_user(request, f"Изменено {count} записи(ей).")
 
     @admin.action(description="Снять с публикации выбранные записи")
     def set_draft(self, request, queryset):
+        """"Снятие постов с публикации"""
         count = queryset.update(is_published=Women.Status.DRAFT)
         self.message_user(
             request, f"{count} записи(ей) сняты с публикации", messages.WARNING

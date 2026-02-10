@@ -4,8 +4,9 @@ from django.db import models
 from django.urls import reverse
 
 
-class PublishedModel(models.Manager): #pylint: disable=R0903
+class PublishedModel(models.Manager):#pylint: disable=R0903
     def get_queryset(self):
+        """Публикация только опубликованных постов"""
         return super().get_queryset().filter(is_published=Women.Status.PUBLISHED)
 
 
@@ -80,6 +81,7 @@ class Women(models.Model):
     #     verbose_name_plural = "Известные женщины"
 
     def get_absolute_url(self):
+        """Формирование url по slug"""
         return reverse("post", kwargs={"post_slug": self.slug})
 
     def __str__(self):
@@ -95,6 +97,7 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
     def get_absolute_url(self):
+        """Формирует url по категории"""
         return reverse("category", kwargs={"cat_slug": self.slug})
 
     def __str__(self):
@@ -106,6 +109,7 @@ class TagPost(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
     def get_absolute_url(self):
+        """Формирует url по категории"""
         return reverse("tag", kwargs={"tag_slug": self.slug})
 
     def __str__(self):
