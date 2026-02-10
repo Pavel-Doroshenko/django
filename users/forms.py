@@ -1,3 +1,4 @@
+"""Формы для работы с пользователями"""
 import datetime
 
 from django import forms
@@ -10,6 +11,7 @@ from django.contrib.auth.forms import (
 
 
 class LoginUserForm(AuthenticationForm):
+    """Форма входа пользователя"""
     username = forms.CharField(
         label="Логин", widget=forms.TextInput(attrs={"class": "form-input"})
     )
@@ -23,6 +25,7 @@ class LoginUserForm(AuthenticationForm):
 
 
 class RegisterUserForm(UserCreationForm):
+    """Регистрация пользователя"""
     username = forms.CharField(
         label="Логин", widget=forms.TextInput(attrs={"class": "form-input"})
     )
@@ -63,6 +66,7 @@ class RegisterUserForm(UserCreationForm):
 
 
 class ProfileUserForm(forms.ModelForm):
+    """Форма для добавления пользователя"""
     username = forms.CharField(
         disabled=True,
         label="Логин",
@@ -91,6 +95,7 @@ class ProfileUserForm(forms.ModelForm):
 
 
 class UserPasswordChangeForm(PasswordChangeForm):
+    """Смена пароля пользователя"""
     old_password = forms.CharField(
         label="Старый пароль", widget=forms.PasswordInput(attrs={"class": "form-input"})
     )

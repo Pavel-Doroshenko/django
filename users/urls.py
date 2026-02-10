@@ -1,3 +1,4 @@
+"""Формирование адресов страниц пользователей"""
 #from django.conf.urls.i18n import urlpatterns
 #from debug_toolbar import APP_NAME
 from django.contrib.auth.views import (

@@ -1,3 +1,4 @@
+"""Панель администрирования"""
 from django.contrib import admin, messages
 from django.utils.safestring import mark_safe
 
@@ -5,6 +6,7 @@ from .models import Women, Category
 
 
 class MarriedFilter(admin.SimpleListFilter):
+    """Статус женщин"""
     title = "Статус женщин"
     parameter_name = "status"
 
@@ -30,6 +32,7 @@ class MarriedFilter(admin.SimpleListFilter):
 
 @admin.register(Women)
 class WomenAdmin(admin.ModelAdmin):
+    """Панель администрирования"""
     list_display = ("title", "post_photo", "time_create", "is_published", "cat")
     list_display_links = ("title",)
     list_editable = ("is_published",)
@@ -78,6 +81,7 @@ class WomenAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    """Категория администратор"""
     list_display = ("id", "name")
     list_display_links = ("id", "name")
 

@@ -1,3 +1,4 @@
+"""Представление пользователей"""
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -29,6 +30,7 @@ from users.forms import (
 
 
 class LoginUser(LoginView):
+    """Логин пользователя"""
     form_class = LoginUserForm
     template_name = "users/login.html"
     extra_context = {"title": "Авторизация"}
@@ -51,6 +53,7 @@ class LoginUser(LoginView):
 
 
 class RegisterUser(CreateView):
+    """Регистрация пользователеЙ"""
     form_class = RegisterUserForm
     template_name = "users/register.html"
     extra_context = {"title": "Регистрация"}
@@ -58,6 +61,7 @@ class RegisterUser(CreateView):
 
 
 class ProfileUser(LoginRequiredMixin, UpdateView):
+    """Профиль пользователя"""
     model = get_user_model()
     form_class = ProfileUserForm
     template_name = "users/profile.html"
@@ -74,6 +78,7 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
 
 
 class UserPasswordChange(PasswordChangeView):
+    """Пароль пользователя"""
     form_class = UserPasswordChangeForm
     success_url = reverse_lazy("users:password_change_done")
     template_name = "users/password_change_form.html"
