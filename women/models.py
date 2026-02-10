@@ -6,6 +6,7 @@ from django.urls import reverse
 
 
 class PublishedModel(models.Manager):#pylint: disable=R0903
+    """Публикация только опубликованных постов"""
     def get_queryset(self):
         """Публикация только опубликованных постов"""
         return super().get_queryset().filter(is_published=Women.Status.PUBLISHED)
