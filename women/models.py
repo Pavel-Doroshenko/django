@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 
-class PublishedModel(models.Manager):
+class PublishedModel(models.Manager): #pylint: disable=R0903
     def get_queryset(self):
         return super().get_queryset().filter(is_published=Women.Status.PUBLISHED)
 
@@ -72,10 +72,12 @@ class Women(models.Model):
         indexes = [
             models.Index(fields=["-time_create"]),
         ]
-
-    class Meta: # pylint: disable=function-redefined
         verbose_name = "Известные женщины"
         verbose_name_plural = "Известные женщины"
+
+    # class Meta: # pylint: disable=function-redefined
+    #     verbose_name = "Известные женщины"
+    #     verbose_name_plural = "Известные женщины"
 
     def get_absolute_url(self):
         return reverse("post", kwargs={"post_slug": self.slug})
