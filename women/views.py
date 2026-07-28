@@ -13,6 +13,8 @@ from women.models import Women, TagPost
 #from django.views.generic import ListView
 from women.utils import DataMixin
 
+
+
 menu = [
     {"title": "О сайте", "url_name": "about"},
     {"title": "Добавить статью", "url_name": "add_page"},
